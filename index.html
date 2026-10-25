@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jason Industries Pty Ltd</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Jason Industries Pty Ltd: mobile boilermaker and coded welder with a mine-compliant ute and welding trailer, servicing the Bowen Basin, Central and North Queensland.">
+<meta property="og:title" content="Jason Industries Pty Ltd">
+<meta property="og:description" content="Driven by passion, defined by precision. Mobile boilermaking and welding across the Bowen Basin.">
+<meta property="og:image" content="https://jasonindustries.co/images/old-hero-welder.jpg">
+<link rel="icon" href="images/old-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: the old black Wix site, kept (top contact bar, welder hero, Raleway, Meet Jason) and lit up with spark orange, the rig as equipment plates, tickets as a register and Room Finder. One dark look on purpose: it is a welding bay at night. */
+:root{
+  --coal:#0b0a09;        /* page black, slightly warm */
+  --soot:#161412;        /* raised surfaces */
+  --line:#2c2722;
+  --ash:#b8afa5;         /* muted text */
+  --white:#f6f2ed;
+  --ember:#ff7a1a;       /* spark orange from the logo and hero */
+  --molten:#ffc070;
+  --ember-ink:#1a0b00;
+  --display:"Raleway","Segoe UI",Helvetica,Arial,sans-serif;
+  --body:"Barlow","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--coal)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--coal);color:var(--white);font:400 1.0625rem/1.6 var(--body)}
+img{max-width:100%}
+a{color:var(--molten)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;letter-spacing:-.01em}
+h2 em{font-style:normal;color:var(--ember)}
+.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ember)}
+section{padding-block:clamp(56px,8vw,104px)}
+.lede{max-width:62ch;color:var(--ash);margin:16px 0 0}
+
+/* top bar, as on the old site */
+.topbar{background:#000;border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;padding-block:14px}
+.reach{display:grid;gap:4px}
+.reach a{color:var(--white);text-decoration:none;font-family:var(--display)}
+.reach .ph{font-size:clamp(1.3rem,2.6vw,1.9rem);font-weight:400;letter-spacing:.01em}
+.reach .em{font-size:.98rem;color:var(--ash)}
+.reach a:hover{color:var(--molten)}
+.nav{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.nav a{display:block;padding:10px 14px;border:1px solid var(--line);color:var(--white);text-decoration:none;font:600 .8rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.nav a:hover{border-color:var(--ember);color:var(--molten)}
+.logo{display:block;width:150px;height:auto;aspect-ratio:715/600;object-fit:cover;margin-block:-8px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:#000}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.55) 48%,rgba(0,0,0,.15) 100%),
+  linear-gradient(0deg,var(--coal) 0%,rgba(11,10,9,0) 38%)}
+#sparks{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hero .wrap{padding-block:clamp(72px,12vw,150px) clamp(40px,6vw,64px)}
+.hero h1{font-size:clamp(2.6rem,7.6vw,5.8rem);font-weight:900;letter-spacing:-.02em;line-height:.98;max-width:12ch}
+.hero h1 span{display:block;font-weight:300;color:var(--molten);font-size:.42em;letter-spacing:.32em;text-transform:uppercase;margin-top:14px}
+.tagline{font:300 clamp(1.25rem,2.6vw,1.8rem)/1.3 var(--display);margin:22px 0 0;max-width:30ch}
+.hero p.sub{color:#d9d1c8;max-width:48ch;margin:16px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 22px;font:700 .98rem/1 var(--body);text-decoration:none;border:2px solid transparent;letter-spacing:.02em}
+.btn-primary{background:var(--ember);color:var(--ember-ink)}
+.btn-primary:hover{background:var(--molten)}
+.btn-ghost{border-color:rgba(246,242,237,.45);color:var(--white)}
+.btn-ghost:hover{border-color:var(--white)}
+.strip{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:clamp(48px,7vw,80px);padding-top:18px;border-top:1px solid rgba(246,242,237,.18);font:500 .8rem/1.3 var(--mono);letter-spacing:.06em;color:var(--ash);text-transform:uppercase}
+.strip b{color:var(--white);font-weight:500}
+
+/* four promises from the old site */
+.promises{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.promise{padding:28px 22px;display:grid;gap:10px;align-content:start;border-left:1px solid var(--line)}
+.promise:first-child{border-left:0}
+.promise .n{font:500 .78rem/1 var(--mono);color:var(--ember);letter-spacing:.12em}
+.promise h3{font-size:1.15rem;font-weight:700;line-height:1.25}
+
+/* services and inclusions */
+.svc-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(28px,5vw,64px);align-items:stretch}
+.svc-head > *{min-width:0}
+.svc-photo{margin:0;position:relative;min-height:320px;overflow:hidden;background:#000}
+.svc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.svc-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,122,26,0) 55%,rgba(255,122,26,.35) 100%)}
+.svc-copy p{color:var(--ash);max-width:58ch}
+.svc-copy p strong{color:var(--white);font-weight:600}
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
+.svc{background:var(--soot);padding:26px 24px 28px;transition:background .2s}
+.svc:hover{background:#1d1a17}
+.svc h3{font-size:1.2rem;font-weight:800}
+.svc h3::before{content:"";display:block;width:28px;height:3px;background:var(--ember);margin-bottom:16px}
+.svc p{margin:10px 0 0;color:var(--ash);font-size:1rem}
+
+/* the rig as equipment plates */
+.rig{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:40px}
+.plate{background:var(--soot);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+.plate img{display:block;width:100%;aspect-ratio:2/1;object-fit:cover;background:#000}
+.plate-body{padding:22px 24px 26px;display:grid;gap:14px}
+.tag{display:inline-flex;align-items:center;gap:10px;font:500 .8rem/1 var(--mono);letter-spacing:.1em;color:var(--ash)}
+.tag b{background:#f5c518;color:#151515;padding:6px 9px;border-radius:3px;font-weight:500;border:2px solid #151515}
+.plate h3{font-size:1.4rem;font-weight:800}
+.spec{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:.98rem}
+.spec dt{font:500 .76rem/1.9 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ash)}
+.spec dd{margin:0}
+
+/* tickets register */
+.tickets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);margin-top:40px}
+.tickets > *{min-width:0}
+.reg-title{font:800 1rem/1 var(--display);text-transform:uppercase;letter-spacing:.12em;margin:0 0 12px;color:var(--molten)}
+.reg{list-style:none;margin:0;padding:0;border-top:2px solid var(--ember)}
+.reg li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.reg li span:last-child{font:500 .8rem/1.7 var(--mono);color:var(--ash);text-align:right}
+
+/* meet jason */
+.about{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(28px,5vw,72px);align-items:center}
+.about > *{min-width:0}
+.about figure{margin:0;position:relative}
+.about figure img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.about figure figcaption{position:absolute;left:0;bottom:0;background:var(--ember);color:var(--ember-ink);font:500 .78rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:10px 12px}
+.about h2 + .role{font:600 .9rem/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--ash);margin:12px 0 0}
+.about p{color:var(--ash);max-width:60ch}
+.about blockquote{margin:26px 0 0;padding-left:18px;border-left:3px solid var(--ember);font:300 1.35rem/1.4 var(--display);color:var(--white);max-width:40ch}
+
+/* room finder */
+.app{background:linear-gradient(120deg,#1b120b,#0f0d0b 60%);border:1px solid var(--line);display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:center;padding:clamp(28px,5vw,52px);overflow:hidden}
+.app > *{min-width:0}
+.app p{color:var(--ash);max-width:54ch}
+.app img{width:200px;max-width:100%;transform:rotate(4deg);filter:drop-shadow(0 24px 40px rgba(0,0,0,.6));justify-self:center}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:start}
+.contact > *{min-width:0}
+.card{background:var(--soot);border:1px solid var(--line);border-top:3px solid var(--ember);padding:26px 24px;display:grid;gap:18px}
+.card .row{display:grid;gap:4px}
+.card .k{font:500 .74rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ash)}
+.card .v{font:700 1.35rem/1.25 var(--display);word-break:break-word}
+.card .v a{color:var(--white);text-decoration:none}
+.card .v a:hover{color:var(--molten)}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.social a{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--line);color:var(--white);text-decoration:none;font:600 .82rem/1 var(--body)}
+.social a:hover{border-color:var(--ember)}
+.social svg{width:16px;height:16px;fill:currentColor}
+
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--ash);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:none}
+
+@media (max-width:900px){
+  .promises{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .promise:nth-child(3){border-left:0}
+  .promise:nth-child(n+3){border-top:1px solid var(--line)}
+  .svc-head,.about,.contact,.app{grid-template-columns:1fr}
+  .services,.tickets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about figure{max-width:420px}
+  .app img{width:160px}
+}
+@media (max-width:600px){
+  .services,.rig,.tickets{grid-template-columns:1fr}
+  .logo{width:110px}
+  .topbar .wrap{justify-content:space-between}
+  .nav{order:3;width:100%}
+  .nav a{padding:9px 11px;font-size:.72rem}
+}
+@media (max-width:420px){
+  .promises{grid-template-columns:1fr}
+  .promise{border-left:0}
+  .promise:nth-child(n+2){border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="reach">
+      <a class="ph" href="tel:+61461405153">0461 405 153</a>
+      <a class="em" href="mailto:jason@jasonindustries.co">jason@jasonindustries.co</a>
+    </div>
+    <ul class="nav" aria-label="Main">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#rig">The rig</a></li>
+      <li><a href="#tickets">Tickets</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#top" aria-label="Jason Industries Pty Ltd, back to top"><img class="logo" src="images/old-logo.png" alt="Jason Industries Pty Ltd logo with welding sparks"></a>
+  </div>
+</header>
+
+<section class="hero" id="top" style="padding:0">
+  <img class="bg" src="images/old-hero-welder.jpg" alt="Welder in orange overalls running a bead with sparks flying">
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Mobile boilermaker · Bowen Basin · Central &amp; North QLD</div>
+    <h1 style="margin-top:20px">Jason Industries <span>Pty Ltd</span></h1>
+    <p class="tagline">Driven by passion, defined by precision.</p>
+    <p class="sub">Coded welder with a mine-compliant service ute and welding trailer. I turn up with power, air and gouging gear, so you don't have to find any on site.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="tel:+61461405153">Call 0461 405 153</a>
+      <a class="btn btn-ghost" href="#contact">Get a quote</a>
+    </div>
+    <div class="strip">
+      <span><b>ISO 9606.1</b> coded</span>
+      <span><b>GCAA Level 2</b></span>
+      <span><b>Standard 11</b></span>
+      <span><b>$20M</b> public liability</span>
+      <span><b>15+ years</b> on the tools</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="promises">
+    <div class="promise"><span class="n">PRECISION</span><h3>Precision welding for demanding conditions</h3></div>
+    <div class="promise"><span class="n">EXPERIENCE</span><h3>15+ years of trusted experience</h3></div>
+    <div class="promise"><span class="n">SAFETY</span><h3>Mine compliant with a strong focus on safety</h3></div>
+    <div class="promise"><span class="n">RELIABILITY</span><h3>Quality work you can count on</h3></div>
+  </div>
+</div>
+
+<main>
+  <section id="services">
+    <div class="wrap">
+      <div class="svc-head">
+        <figure class="svc-photo"><img src="images/old-stock.jpg" alt="Gas cylinder regulator and gauges"></figure>
+        <div class="svc-copy">
+          <div class="eyebrow">Services &amp; inclusions</div>
+          <h2 style="margin-top:14px">Full mobile <em>field services.</em></h2>
+          <p>Combining industry experience, proven results and expert skill, we deliver work built to withstand the toughest conditions.</p>
+          <p><strong>Delivered by a qualified boilermaker with a mine-compliant vehicle and trade trailer,</strong> supporting operations across the Bowen Basin coal regions and throughout Central and North Queensland.</p>
+          <p>Whether it's a one-off job or an ongoing project, we've got you covered.</p>
+        </div>
+      </div>
+      <div class="services">
+        <div class="svc"><h3>Breakdowns and callouts</h3><p>Mobile field service when something lets go. Self-contained, so I can start straight away.</p></div>
+        <div class="svc"><h3>Shutdown maintenance</h3><p>Planned shutdowns at mines, CHPPs, ports and mills. Crew supervision available.</p></div>
+        <div class="svc"><h3>HME repairs</h3><p>Buckets, sticks, booms and trays. Crack repairs, wear plate and rebuilds.</p></div>
+        <div class="svc"><h3>Structural and plate</h3><p>Fabrication, plate work and structural repairs to coded standard.</p></div>
+        <div class="svc"><h3>Carbon arc gouging</h3><p>Rotary screw compressor on the trailer, so no site air is needed for gouging.</p></div>
+        <div class="svc"><h3>Materials handling</h3><p>Conveyors, chutes and CHPP maintenance, plus mechanical commissioning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rig" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">The rig</div>
+      <h2 style="margin-top:14px">Everything on the truck. <em>Nothing needed from you.</em></h2>
+      <div class="rig">
+        <article class="plate">
+          <img src="images/ji01-ute.jpg" alt="JI01 service support ute, a dual cab Ford Ranger with a service body">
+          <div class="plate-body">
+            <span class="tag"><b>JI01</b> SERVICE SUPPORT UTE</span>
+            <h3>Mine-compliant dual cab with a lockable service body</h3>
+            <dl class="spec">
+              <dt>Vehicle</dt><dd>Ford Ranger, electric brake controller</dd>
+              <dt>Tools</dt><dd>Full boilermaking and fitting kit, Milwaukee power tools</dd>
+              <dt>Welder</dt><dd>UniMig 120 A portable MIG</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="plate">
+          <img src="images/ji02-trailer.jpg" alt="JI02 standalone welding trailer">
+          <div class="plate-body">
+            <span class="tag"><b>JI02</b> STANDALONE WELDING TRAILER</span>
+            <h3>Site-safe power, air and cutting</h3>
+            <dl class="spec">
+              <dt>Welder</dt><dd>Lincoln Air Vantage 500, multi-process, rotary screw compressor</dd>
+              <dt>Power</dt><dd>GenPower GXS 14000D, 14 kVA site-safe diesel</dd>
+              <dt>Cutting</dt><dd>Oxy/LPG set, carbon arc gouging</dd>
+              <dt>Reach</dt><dd>Two wire feeders, 60 m of welding leads</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tickets" style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">Tickets and compliance</div>
+      <h2 style="margin-top:14px">Coded, inducted <em>and insured.</em></h2>
+      <div class="tickets">
+        <div>
+          <p class="reg-title">Trade and welding</p>
+          <ul class="reg">
+            <li><span>Cert III Engineering, Fabrication (Boilermaker)</span><span>2009</span></li>
+            <li><span>AS/NZS ISO 9606.1:2017</span><span>GMAW / FCAW</span></li>
+            <li><span>Glencore GCAA Level 2</span><span>Coded welder</span></li>
+            <li><span>Visual, UT and macro tested</span><span>ISO 5817 B</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="reg-title">Lifting and plant</p>
+          <ul class="reg">
+            <li><span>Slewing crane</span><span>To 60 t</span></li>
+            <li><span>Dogging</span><span>HRW DG</span></li>
+            <li><span>Gantry crane</span><span>Current</span></li>
+            <li><span>Forklift and EWP</span><span>Current</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="reg-title">Site</p>
+          <ul class="reg">
+            <li><span>Standard 11 and Coal Board Medical</span><span>Current</span></li>
+            <li><span>Confined space and gas test</span><span>Current</span></li>
+            <li><span>Working at heights</span><span>Current</span></li>
+            <li><span>Mine site inductions, vehicle and trailer compliance</span><span>Various</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top:0">
+    <div class="wrap about">
+      <figure>
+        <img src="images/old-about.jpg" alt="Jason Mitchell in a hard hat and orange high-vis shirt">
+        <figcaption>Jason Mitchell</figcaption>
+      </figure>
+      <div>
+        <div class="eyebrow">About us</div>
+        <h2 style="margin-top:14px">Meet Jason</h2>
+        <p class="role">Director &amp; lead boilermaker</p>
+        <p>Jason, the founder of Jason Industries Pty Ltd, is a skilled boilermaker and proud business owner whose story reflects a lifelong commitment to precision, reliability and customer satisfaction. From a childhood spent on the water to leading industrial projects in Queensland, his journey has been defined by craftsmanship, dedication and a strong work ethic.</p>
+        <p>With over a decade and a half of hands-on industry experience and a lifetime of learning from both sea and steel, Jason brings craftsmanship, leadership and integrity to every project. Whether it's urgent shutdown work or precision fabrication, Jason Industries delivers results that speak for themselves.</p>
+        <blockquote>Quality over volume. Right the first time, every time.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="room-finder" style="padding-top:0">
+    <div class="wrap">
+      <div class="app">
+        <div>
+          <div class="eyebrow">Also from Jason Industries</div>
+          <h2 style="margin-top:12px">Room Finder, for FIFO and DIDO camps.</h2>
+          <p>New camp, night shift, 2am, and every donga looks the same. Snap the camp map at the gate, tap where you are and your room, and it draws the way there along the paths. Works with no signal. No login, no ads, one-off price.</p>
+          <div class="cta"><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.jasonindustries.roomfinder" target="_blank" rel="noopener">Get it on Google Play</a></div>
+        </div>
+        <img src="images/room-finder-phone.svg" alt="Room Finder app showing a route across a camp map">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap contact">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2 style="margin-top:14px">Need a boilermaker <em>on site?</em></h2>
+        <p class="lede">Call or email with the job, the site and the dates. Contact us today to discuss your next project.</p>
+      </div>
+      <div class="card">
+        <div class="row"><span class="k">Phone</span><span class="v"><a href="tel:+61461405153">0461 405 153</a></span></div>
+        <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:jason@jasonindustries.co">jason@jasonindustries.co</a></span></div>
+        <div class="row"><span class="k">Business</span><span class="v" style="font-size:1.05rem">Jason Industries Pty Ltd · ABN 71 671 131 249</span></div>
+        <div class="social">
+          <a href="https://www.facebook.com/profile.php?id=61578955202288" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8V6.2c0-.8.2-1.2 1.4-1.2H17V2h-2.6C11.6 2 10.8 3.6 10.8 6v2H8.5v3h2.3v11H14V11h2.6l.4-3z"/></svg>Facebook</a>
+          <a href="https://www.instagram.com/jasonindustriesptyltd/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 3.6c2.7 0 3 0 4.1.1 2.7.1 4.1 1.5 4.2 4.2.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 2.7-1.5 4.1-4.2 4.2-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-2.7-.1-4.1-1.5-4.2-4.2C3.6 15 3.6 14.7 3.6 12s0-3 .1-4.1C3.8 5.2 5.2 3.8 7.9 3.7 9 3.6 9.3 3.6 12 3.6zM12 2C9.3 2 8.9 2 7.8 2.1 4.2 2.2 2.2 4.2 2.1 7.8 2 8.9 2 9.3 2 12s0 3.1.1 4.2c.1 3.6 2.1 5.6 5.7 5.7 1.1.1 1.5.1 4.2.1s3.1 0 4.2-.1c3.6-.1 5.6-2.1 5.7-5.7.1-1.1.1-1.5.1-4.2s0-3.1-.1-4.2c-.1-3.6-2.1-5.6-5.7-5.7C15.1 2 14.7 2 12 2z"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <q>Driven by passion, defined by precision.</q>
+    <span>© 2026 Jason Industries Pty Ltd · ABN 71 671 131 249</span>
+  </div>
+</footer>
+
+<script>
+/* Embers drifting up from the weld in the hero. Stops for reduced motion. */
+(function(){
+  var c=document.getElementById('sparks'); if(!c||!c.getContext) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var x=c.getContext('2d'), w=0, h=0, dpr=Math.min(window.devicePixelRatio||1,2), parts=[];
+  function size(){var r=c.getBoundingClientRect(); w=r.width; h=r.height; c.width=w*dpr; c.height=h*dpr; x.setTransform(dpr,0,0,dpr,0,0);}
+  function spawn(){
+    var ox=w*(0.55+Math.random()*0.25), oy=h*(0.78+Math.random()*0.15);
+    return {x:ox,y:oy,vx:(Math.random()-.5)*1.6,vy:-(0.6+Math.random()*2.2),life:0,max:60+Math.random()*120,r:.6+Math.random()*1.6};
+  }
+  function tick(){
+    x.clearRect(0,0,w,h);
+    if(parts.length<90) parts.push(spawn(),spawn());
+    x.globalCompositeOperation='lighter';
+    for(var i=parts.length-1;i>=0;i--){
+      var p=parts[i]; p.life++; p.x+=p.vx; p.y+=p.vy; p.vy+=0.012; p.vx*=0.995;
+      var t=1-p.life/p.max; if(t<=0){parts.splice(i,1);continue;}
+      x.fillStyle='rgba(255,'+Math.round(140+90*t)+','+Math.round(60*t)+','+(0.85*t).toFixed(3)+')';
+      x.beginPath(); x.arc(p.x,p.y,p.r*(0.6+t),0,6.283); x.fill();
+    }
+    x.globalCompositeOperation='source-over';
+    raf=requestAnimationFrame(tick);
+  }
+  var raf; size(); addEventListener('resize',size);
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){cancelAnimationFrame(raf);} else {raf=requestAnimationFrame(tick);} });
+  raf=requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
