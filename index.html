@@ -154,6 +154,25 @@ footer{border-top:1px solid var(--line);padding-block:28px;color:var(--ash);font
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:none}
 
+/* availability: three months of day tiles, read from data/availability.json */
+.avail-head{display:flex;justify-content:space-between;align-items:end;gap:16px 32px;flex-wrap:wrap}
+.legend{display:flex;gap:10px 20px;flex-wrap:wrap;font:500 .78rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ash);margin:0;padding:0;list-style:none}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:16px;height:16px}
+.months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,36px);margin-top:32px}
+.month{min-width:0}
+.month h3{font:800 1rem/1 var(--display);text-transform:uppercase;letter-spacing:.12em;color:var(--molten);margin:0 0 12px;padding-bottom:10px;border-bottom:2px solid var(--ember)}
+.grid7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+.grid7 .dow{font:500 .66rem/1 var(--mono);color:var(--ash);text-align:center;padding:4px 0 6px;letter-spacing:.06em}
+.day{aspect-ratio:1;display:flex;align-items:flex-start;justify-content:flex-start;padding:5px 6px;font:600 .82rem/1 var(--body);min-width:0}
+.d-av,.legend .d-av{background:var(--ember);color:var(--ember-ink)}
+.d-bk,.legend .d-bk{background:var(--soot);color:#8a8076;border:1px solid var(--line)}
+.d-eq,.legend .d-eq{background:transparent;color:var(--molten);border:1px dashed var(--molten)}
+.d-past{background:transparent;color:#3d3731}
+.day.today{outline:2px solid var(--white);outline-offset:-2px}
+.avail-note{color:var(--ash);font-size:.95rem;margin:22px 0 0;max-width:70ch}
+@media (max-width:900px){.months{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.months{grid-template-columns:1fr}}
 @media (max-width:900px){
   .promises{grid-template-columns:repeat(2,minmax(0,1fr))}
   .promise:nth-child(3){border-left:0}
@@ -190,6 +209,7 @@ footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:no
       <li><a href="#rig">The rig</a></li>
       <li><a href="#tickets">Tickets</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#availability">Availability</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#top" aria-label="Jason Industries Pty Ltd, back to top"><img class="logo" src="images/old-logo.png" alt="Jason Industries Pty Ltd logo with welding sparks"></a>
@@ -354,6 +374,24 @@ footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:no
     </div>
   </section>
 
+  <section id="availability" style="padding-top:0">
+    <div class="wrap">
+      <div class="avail-head">
+        <div>
+          <div class="eyebrow">Availability</div>
+          <h2 style="margin-top:14px">When can Jason <em>get to you?</em></h2>
+        </div>
+        <ul class="legend" aria-label="Key">
+          <li><i class="d-av"></i>Available</li>
+          <li><i class="d-eq"></i>Enquire</li>
+          <li><i class="d-bk"></i>Booked</li>
+        </ul>
+      </div>
+      <div class="months" id="months" aria-live="polite"></div>
+      <p class="avail-note" id="avail-note">Dates change quickly. Email or call to lock in a booking.</p>
+    </div>
+  </section>
+
   <section id="contact" style="padding-top:0">
     <div class="wrap contact">
       <div>
@@ -409,6 +447,38 @@ footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:no
   var raf; size(); addEventListener('resize',size);
   document.addEventListener('visibilitychange',function(){ if(document.hidden){cancelAnimationFrame(raf);} else {raf=requestAnimationFrame(tick);} });
   raf=requestAnimationFrame(tick);
+})();
+</script>
+<script>
+/* Availability calendar: today in Queensland time, this month plus the next two. */
+(function(){
+  var box=document.getElementById('months'); if(!box) return;
+  function ymd(d){return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0');}
+  var now=new Date(Date.now()+10*3600*1000), today=ymd(now);
+  var MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function within(ranges,k){for(var i=0;i<ranges.length;i++){if(k>=ranges[i][0]&&k<=ranges[i][1])return true;}return false;}
+  function draw(data){
+    var html='', y=now.getUTCFullYear(), m=now.getUTCMonth();
+    for(var n=0;n<3;n++){
+      var first=new Date(Date.UTC(y,m+n,1)), yy=first.getUTCFullYear(), mm=first.getUTCMonth();
+      var days=new Date(Date.UTC(yy,mm+1,0)).getUTCDate(), lead=(first.getUTCDay()+6)%7;
+      html+='<div class="month"><h3>'+MON[mm]+' '+yy+'</h3><div class="grid7">';
+      ['M','T','W','T','F','S','S'].forEach(function(d){html+='<div class="dow" aria-hidden="true">'+d+'</div>';});
+      for(var b=0;b<lead;b++) html+='<div aria-hidden="true"></div>';
+      for(var d=1;d<=days;d++){
+        var k=ymd(new Date(Date.UTC(yy,mm,d))), cls, label;
+        if(k<today){cls='d-past';label='past';}
+        else if(within(data.booked,k)){cls='d-bk';label='booked';}
+        else if(within(data.enquire,k)){cls='d-eq';label='enquire';}
+        else {cls='d-av';label='available';}
+        html+='<div class="day '+cls+(k===today?' today':'')+'" title="'+d+' '+MON[mm]+': '+label+'" aria-label="'+d+' '+MON[mm]+' '+label+'">'+d+'</div>';
+      }
+      html+='</div></div>';
+    }
+    box.innerHTML=html;
+    if(data.updated){var u=data.updated.split('-');document.getElementById('avail-note').textContent='Updated '+(+u[2])+' '+MON[+u[1]-1]+' '+u[0]+'. Dates change quickly. Email or call to lock in a booking.';}
+  }
+  fetch('data/availability.json',{cache:'no-store'}).then(function(r){return r.json();}).then(draw).catch(function(){document.getElementById('avail-note').textContent='Email or call for current availability.';});
 })();
 </script>
 </body>
