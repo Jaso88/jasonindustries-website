@@ -459,7 +459,7 @@ footer q{font-family:var(--display);font-weight:600;color:var(--white);quotes:no
   function within(ranges,k){for(var i=0;i<ranges.length;i++){if(k>=ranges[i][0]&&k<=ranges[i][1])return true;}return false;}
   function draw(data){
     var html='', y=now.getUTCFullYear(), m=now.getUTCMonth();
-    for(var n=0;n<3;n++){
+    for(var n=0;n<4;n++){
       var first=new Date(Date.UTC(y,m+n,1)), yy=first.getUTCFullYear(), mm=first.getUTCMonth();
       var days=new Date(Date.UTC(yy,mm+1,0)).getUTCDate(), lead=(first.getUTCDay()+6)%7;
       html+='<div class="month"><h3>'+MON[mm]+' '+yy+'</h3><div class="grid7">';
